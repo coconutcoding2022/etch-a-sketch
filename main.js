@@ -27,17 +27,13 @@ function createGrid(height = 16, width = 16) {
     
 }
 
-function clearGrid() {
-    let insideContainer = document.querySelector('.inside-Container')
-    insideContainer.remove()
-}
-
 
 
 
 button.addEventListener('click', () => {
     let askHeight = Number(prompt("What height do you want?"));
     let askWidth = Number(prompt("What width do you want?"));
+    let insideContainer = document.querySelector('.inside-Container')
 
     while (askHeight > 100 || askWidth > 100) {
         alert("Pick a height and width below 100")
@@ -45,13 +41,17 @@ button.addEventListener('click', () => {
         askWidth = Number(prompt("What width do you want?"));
    }
 
-
-    if(askHeight <= 100 ) {
+    
+    if (!insideContainer) {
         createGrid(askHeight, askWidth);
     }
+    
+    else {
+        insideContainer.remove();
+        createGrid(askHeight, askWidth);
 
-
-
+    }
+    
 })
 
 
